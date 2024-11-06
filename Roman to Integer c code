@@ -1,0 +1,45 @@
+int romanToInt(char* s) {
+    int result = 0;
+    int i = 0;
+
+    while (s[i]) {
+        // Determine the value of the current and next Roman numeral
+        int current = 0, next = 0;
+
+        switch (s[i]) {
+            case 'I': current = 1; break;
+            case 'V': current = 5; break;
+            case 'X': current = 10; break;
+            case 'L': current = 50; break;
+            case 'C': current = 100; break;
+            case 'D': current = 500; break;
+            case 'M': current = 1000; break;
+        }
+
+        if (s[i + 1]) {
+            switch (s[i + 1]) {
+                case 'I': next = 1; break;
+                case 'V': next = 5; break;
+                case 'X': next = 10; break;
+                case 'L': next = 50; break;
+                case 'C': next = 100; break;
+                case 'D': next = 500; break;
+                case 'M': next = 1000; break;
+            }
+        }
+
+        // If the current value is less than the next value, subtract the current value from the result
+        if (current < next) {
+            result -= current;
+        } else {
+            // Otherwise, add the current value to the result
+            result += current;
+        }
+
+        // Move to the next character
+        i++;
+    }
+
+    return result;
+    
+}
